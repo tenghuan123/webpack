@@ -4,6 +4,8 @@ const { MiniHtmlWebpackPlugin } = require('mini-html-webpack-plugin')
 
 const { WebpackPluginServe } = require('webpack-plugin-serve')
 
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+
 module.exports = {
     watch: mode === 'development',
     entry: ['./src', 'webpack-plugin-serve/client'],
@@ -16,6 +18,7 @@ module.exports = {
             liveReload: true, // 在线加载模式
             waitForBuild: true, // 等待构建
             host: '127.0.0.1', // Safari 必须设置host: "127.0.0.1" WebpackPluginServe实时重新加载才能工作
-        })
+        }),
+        new CaseSensitivePathsPlugin(), // 区分大小写的插件
     ]
 }
