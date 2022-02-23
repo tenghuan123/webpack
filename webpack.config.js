@@ -1,24 +1,30 @@
 const { mode } = require('webpack-nano/argv')
 
-const { MiniHtmlWebpackPlugin } = require('mini-html-webpack-plugin')
+const { merge } = require('webpack-merge')
 
-const { WebpackPluginServe } = require('webpack-plugin-serve')
+const parts = require('./webpack.part')
 
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const commonConfig = merge([
+    { entry: ['./src'] },
+    parts.page({ title: 'Demo' })
+])
 
-module.exports = {
-    watch: mode === 'development',
-    entry: ['./src', 'webpack-plugin-serve/client'],
-    mode,
-    plugins: [ 
-        new MiniHtmlWebpackPlugin({context: { title: 'Demo' }}),
-        new WebpackPluginServe({
-            port: process.env.PORT || 8080,
-            static: './dist',
-            liveReload: true, // 在线加载模式
-            waitForBuild: true, // 等待构建
-            host: '127.0.0.1', // Safari 必须设置host: "127.0.0.1" WebpackPluginServe实时重新加载才能工作
-        }),
-        new CaseSensitivePathsPlugin(), // 区分大小写的插件
-    ]
+const productionConfig = merge([]);
+
+const developmentConfig = merge([
+    { entry: ["webpack-plugin-serve/client"] },
+    parts.devServer()
+]);
+
+const getConfig = (mode) => {
+    switch(mode) {
+        case "production":
+            return merge(commonConfig, productionConfig, { mode })
+        case "development":
+            return merge(commonConfig, developmentConfig, { mode })
+        default:
+            throw new Error(`Trying to use an unknown mode, ${mode}`)
+    }
 }
+
+module.exports = getConfig(mode)
