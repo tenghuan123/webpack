@@ -1,1 +1,1 @@
-export * from './div'
+export { default as div } from './div'
