@@ -1,3 +1,3 @@
 import { div } from './components'
 
-document.body.appendChild(div())
+document.body.appendChild(div('hello china'))
