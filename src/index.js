@@ -1,1 +1,3 @@
-console.log('hello world')
+import { div } from './components'
+
+document.body.appendChild(div())
