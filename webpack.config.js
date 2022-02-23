@@ -13,9 +13,9 @@ module.exports = {
         new WebpackPluginServe({
             port: process.env.PORT || 8080,
             static: './dist',
-            liveReload: true,
-            waitForBuild: true,
-            host: '127.0.0.1'
+            liveReload: true, // 在线加载模式
+            waitForBuild: true, // 等待构建
+            host: '127.0.0.1', // Safari 必须设置host: "127.0.0.1" WebpackPluginServe实时重新加载才能工作
         })
     ]
 }
