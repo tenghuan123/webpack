@@ -1,10 +1,16 @@
 const { mode } = require('webpack-nano/argv')
 
+const path = require('path')
+
 const { MiniHtmlWebpackPlugin } = require('mini-html-webpack-plugin')
 
 const { WebpackPluginServe } = require('webpack-plugin-serve')
 
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
 
 exports.devServer = () => ({
     watch: true,
@@ -27,20 +33,43 @@ exports.page = ({ title }) => ({
     ]
 })
 
-exports.loadCSS = () => ({
-    module: {
-        rules: [
+exports.extractCSS = ({ options = {}, loaders = [] } = {}) => {
+    return {
+        module: { 
+            rules: [
+                {
+                    test: /\.css$/,
+                    use: [
+                        {
+                            loader: MiniCssExtractPlugin.loader,
+                            options,
+                        },
+                        "css-loader",
+                        "sass-loader"
+                    ].concat(loaders),
+                    sideEffects: true,
+                }
+            ]
+         },
+         plugins: [
+             new MiniCssExtractPlugin({
+                 filename: "[name].css",
+             })
+         ]
+    }
+}
+
+exports.GlobEntries = () => ({
+        entry: WebpackWatchedGlobEntries.getEntries(
+            [
+                path.resolve(__dirname, './src/**/*.css'),
+            ],
             { 
-                test: /\.css$/, 
-                use: [
-                    "style-loader",
-                    {
-                        loader : "css-loader",
-                        options: { importLoaders: 1 },
-                    },
-                    "sass-loader"
-                ]
+                ignore: './src/**/*.css'
             }
+        ),
+        plugins: [
+            new WebpackWatchedGlobEntries(),
         ]
     }
-})
+)

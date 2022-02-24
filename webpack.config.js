@@ -4,10 +4,16 @@ const { merge } = require('webpack-merge')
 
 const parts = require('./webpack.part')
 
+// const glob = require('glob')
+
 const commonConfig = merge([
     { entry: ['./src'] },
+    // {
+    //     entry: { style: glob.sync("./src/**/*.css") } // 在此更改之后，您不必再从应用程序代码中引用样式。但是，在这种方法中，您必须小心 CSS 排序
+    // },
+    // parts.GlobEntries(),
     parts.page({ title: 'Demo' }),
-    parts.loadCSS(),
+    parts.extractCSS()
 ])
 
 const productionConfig = merge([]);
