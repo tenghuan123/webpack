@@ -12,6 +12,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
 
+const glob = require('glob')
+
+const PurgeCSSPlugin = require('purgecss-webpack-plugin')
+
+const ALL_FILES = glob.sync(path.join(__dirname, 'src/*.js'))
+
 exports.devServer = () => ({
     watch: true,
     mode,
@@ -45,7 +51,6 @@ exports.extractCSS = ({ options = {}, loaders = [] } = {}) => {
                             options,
                         },
                         "css-loader",
-                        "sass-loader"
                     ].concat(loaders),
                     sideEffects: true,
                 }
@@ -73,3 +78,26 @@ exports.GlobEntries = () => ({
         ]
     }
 )
+
+// 顺风 
+exports.tailwind = () => ({
+    loader: "postcss-loader",
+    options: {
+      postcssOptions: { plugins: [require("tailwindcss")()] },
+    },
+})
+
+// 消除未使用的 CSS
+exports.eliminateUnusedCSS = () => ({
+    plugins: [
+        new PurgeCSSPlugin({ 
+            path: ALL_FILES, // Consider extracting as a parameter
+            extractors: [
+                { 
+                    extractor: (content) => content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || [],
+                    extensions: ["html"]
+                }
+            ]
+        })
+    ]
+})
