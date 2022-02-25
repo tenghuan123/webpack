@@ -14,6 +14,7 @@ const commonConfig = merge([
     //     entry: { style: glob.sync("./src/**/*.css") } // 在此更改之后，您不必再从应用程序代码中引用样式。但是，在这种方法中，您必须小心 CSS 排序
     // },
     // parts.GlobEntries(),
+    parts.BabelLoader(),
     parts.page({ title: 'Demo' }),
     parts.extractCSS({ loaders: cssLoaders })
 ])

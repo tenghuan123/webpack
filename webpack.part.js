@@ -102,10 +102,24 @@ exports.eliminateUnusedCSS = () => ({
     ]
 })
 
-// 设置自动前缀
+// 设置css自动前缀
 exports.autoprefixer = () => ({
     loader: 'postcss-loader',
     options: {
         postcssOptions: { plugins: [require("autoprefixer")()] }
+    }
+})
+
+// babel-loader
+exports.BabelLoader = () => ({
+    module: {
+        rules: [
+            { 
+                test: /\.js$/,
+                include: path.join(__dirname, "app"),
+                exclude: path => path.match(/node_modules/),
+                use: "babel-loader",
+             }
+        ]
     }
 })
