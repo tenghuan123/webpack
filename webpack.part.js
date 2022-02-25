@@ -101,3 +101,11 @@ exports.eliminateUnusedCSS = () => ({
         })
     ]
 })
+
+// 设置自动前缀
+exports.autoprefixer = () => ({
+    loader: 'postcss-loader',
+    options: {
+        postcssOptions: { plugins: [require("autoprefixer")()] }
+    }
+})

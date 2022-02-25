@@ -6,7 +6,7 @@ const parts = require('./webpack.part')
 
 // const glob = require('glob')
 
-const cssLoaders = [parts.tailwind()]
+const cssLoaders = [parts.autoprefixer(), parts.tailwind()]
 
 const commonConfig = merge([
     { entry: ['./src'] },
