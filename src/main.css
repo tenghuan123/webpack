@@ -5,4 +5,6 @@
 
 body {
     background: cornsilk;
+    background-image: url('./images/黑人问号.jpeg');
+    background-repeat: no-repeat;
 }

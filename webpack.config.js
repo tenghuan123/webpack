@@ -16,7 +16,8 @@ const commonConfig = merge([
     // parts.GlobEntries(),
     parts.BabelLoader(),
     parts.page({ title: 'Demo' }),
-    parts.extractCSS({ loaders: cssLoaders })
+    parts.extractCSS({ loaders: cssLoaders }),
+    parts.loadImages({ limit: 150 })
 ])
 
 const productionConfig = merge([parts.eliminateUnusedCSS()]);
