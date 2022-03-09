@@ -38,7 +38,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ \"./src/components/index.js\");\n/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main.css */ \"./src/main.css\");\n\n\ndocument.body.appendChild((0,_components__WEBPACK_IMPORTED_MODULE_0__.div)('hello china'));\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components */ \"./src/components/index.js\");\n/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./main.css */ \"./src/main.css\");\n/* harmony import */ var _ts_div__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ts/div */ \"./src/ts/div.ts\");\n/* harmony import */ var _ts_div__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ts_div__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\ndocument.body.appendChild((0,_components__WEBPACK_IMPORTED_MODULE_0__.div)('hello china'));\ndocument.body.appendChild((0,_ts_div__WEBPACK_IMPORTED_MODULE_2__.TsDiv)('TsDiv'));\n\n//# sourceURL=webpack://webpack-demo/./src/index.js?");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ eval("\n\n/* eslint-disable */\n\n/**\n * @param {string[]} pathComponents\n * @
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1646791020585\n      var cssReload = __webpack_require__(/*! ../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://webpack-demo/./src/main.css?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n    if(true) {\n      // 1646832832124\n      var cssReload = __webpack_require__(/*! ../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ \"./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js\")(module.id, {\"locals\":false});\n      module.hot.dispose(cssReload);\n      module.hot.accept(undefined, cssReload);\n    }\n  \n\n//# sourceURL=webpack://webpack-demo/./src/main.css?");
 
 /***/ }),
 
@@ -81,7 +81,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
   \*****************************************************/
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval("/*\n  Copyright © 2018 Andrew Powell\n\n  This Source Code Form is subject to the terms of the Mozilla Public\n  License, v. 2.0. If a copy of the MPL was not distributed with this\n  file, You can obtain one at http://mozilla.org/MPL/2.0/.\n\n  The above copyright notice and this permission notice shall be\n  included in all copies or substantial portions of this Source Code Form.\n*/\n\n/**\n * @note This file exists merely as an easy reference for folks adding it to their configuration entries\n */\n\n(() => {\n  /* eslint-disable global-require */\n  const { run } = __webpack_require__(/*! ./lib/client/client */ \"./node_modules/webpack-plugin-serve/lib/client/client.js\");\n  let hash = '<unknown>';\n  let options;\n  try {\n    options = {\"compress\":null,\"headers\":null,\"historyFallback\":false,\"hmr\":true,\"host\":\"127.0.0.1\",\"liveReload\":true,\"log\":{\"level\":\"info\",\"prefix\":{\"template\":\"{{level}}\"},\"name\":\"webpack-plugin-serve\"},\"open\":false,\"port\":8080,\"progress\":true,\"publicPath\":null,\"ramdisk\":false,\"secure\":false,\"static\":\"./dist\",\"status\":true,\"waitForBuild\":true,\"address\":\"127.0.0.1:8080\",\"compilerName\":null,\"wpsId\":\"34c2318\"};\n  } catch (e) {\n    const { log } = __webpack_require__(/*! ./lib/client/log */ \"./node_modules/webpack-plugin-serve/lib/client/log.js\");\n    log.error(\n      'The entry for webpack-plugin-serve was included in your build, but it does not appear that the plugin was. Please check your configuration.'\n    );\n  }\n\n  try {\n    // eslint-disable-next-line camelcase\n    hash = __webpack_require__.h();\n  } catch (e) {} // eslint-disable-line no-empty\n\n  run(hash, options);\n})();\n\n\n//# sourceURL=webpack://webpack-demo/./node_modules/webpack-plugin-serve/client.js?");
+eval("/*\n  Copyright © 2018 Andrew Powell\n\n  This Source Code Form is subject to the terms of the Mozilla Public\n  License, v. 2.0. If a copy of the MPL was not distributed with this\n  file, You can obtain one at http://mozilla.org/MPL/2.0/.\n\n  The above copyright notice and this permission notice shall be\n  included in all copies or substantial portions of this Source Code Form.\n*/\n\n/**\n * @note This file exists merely as an easy reference for folks adding it to their configuration entries\n */\n\n(() => {\n  /* eslint-disable global-require */\n  const { run } = __webpack_require__(/*! ./lib/client/client */ \"./node_modules/webpack-plugin-serve/lib/client/client.js\");\n  let hash = '<unknown>';\n  let options;\n  try {\n    options = {\"compress\":null,\"headers\":null,\"historyFallback\":false,\"hmr\":true,\"host\":\"127.0.0.1\",\"liveReload\":true,\"log\":{\"level\":\"info\",\"prefix\":{\"template\":\"{{level}}\"},\"name\":\"webpack-plugin-serve\"},\"open\":false,\"port\":8080,\"progress\":true,\"publicPath\":null,\"ramdisk\":false,\"secure\":false,\"static\":\"./dist\",\"status\":true,\"waitForBuild\":true,\"address\":\"127.0.0.1:8080\",\"compilerName\":null,\"wpsId\":\"713b94f\"};\n  } catch (e) {\n    const { log } = __webpack_require__(/*! ./lib/client/log */ \"./node_modules/webpack-plugin-serve/lib/client/log.js\");\n    log.error(\n      'The entry for webpack-plugin-serve was included in your build, but it does not appear that the plugin was. Please check your configuration.'\n    );\n  }\n\n  try {\n    // eslint-disable-next-line camelcase\n    hash = __webpack_require__.h();\n  } catch (e) {} // eslint-disable-line no-empty\n\n  run(hash, options);\n})();\n\n\n//# sourceURL=webpack://webpack-demo/./node_modules/webpack-plugin-serve/client.js?");
 
 /***/ }),
 
@@ -163,6 +163,16 @@ eval("/*\n  Copyright © 2018 Andrew Powell\n\n  This Source Code Form is subjec
 
 eval("/*\n  Copyright © 2018 Andrew Powell\n\n  This Source Code Form is subject to the terms of the Mozilla Public\n  License, v. 2.0. If a copy of the MPL was not distributed with this\n  file, You can obtain one at http://mozilla.org/MPL/2.0/.\n\n  The above copyright notice and this permission notice shall be\n  included in all copies or substantial portions of this Source Code Form.\n*/\nconst addHtml = (html, parent) => {\n  const div = document.createElement('div');\n  const nodes = [];\n\n  div.innerHTML = html.trim();\n\n  while (div.firstChild) {\n    nodes.push((parent || document.body).appendChild(div.firstChild));\n  }\n\n  return nodes;\n};\n\nconst addCss = (css) => {\n  const style = document.createElement('style');\n\n  style.type = 'text/css';\n\n  if (css.styleSheet) {\n    style.styleSheet.cssText = css;\n  } else {\n    style.appendChild(document.createTextNode(css));\n  }\n\n  // append the stylesheet for the svg\n  document.head.appendChild(style);\n};\n\nconst socketMessage = (socket, handler) => {\n  socket.addEventListener('message', (message) => {\n    const { action, data = {} } = JSON.parse(message.data);\n    handler(action, data);\n  });\n};\n\nmodule.exports = { addCss, addHtml, socketMessage };\n\n\n//# sourceURL=webpack://webpack-demo/./node_modules/webpack-plugin-serve/lib/client/overlays/util.js?");
 
+/***/ }),
+
+/***/ "./src/ts/div.ts":
+/*!***********************!*\
+  !*** ./src/ts/div.ts ***!
+  \***********************/
+/***/ (function() {
+
+eval("throw new Error(\"Module parse failed: Unexpected token (1:32)\\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\\n> export default function div(text:string = 'hello world'):Element {\\n|     const element = document.createElement('div')\\n|     element.className = 'rounded bg-red-100 border max-w-md m-4 p-4'\");\n\n//# sourceURL=webpack://webpack-demo/./src/ts/div.ts?");
+
 /***/ })
 
 /******/ 	});
@@ -210,6 +220,18 @@ eval("/*\n  Copyright © 2018 Andrew Powell\n\n  This Source Code Form is subjec
 /******/ 	__webpack_require__.i = [];
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	!function() {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = function(module) {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				function() { return module['default']; } :
+/******/ 				function() { return module; };
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	}();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	!function() {
 /******/ 		// define getter functions for harmony exports
@@ -227,7 +249,7 @@ eval("/*\n  Copyright © 2018 Andrew Powell\n\n  This Source Code Form is subjec
 /******/ 		// This function allow to reference all chunks
 /******/ 		__webpack_require__.hu = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "34c2318-" + chunkId + "-wps-hmr.js";
+/******/ 			return "713b94f-" + chunkId + "-wps-hmr.js";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -242,12 +264,12 @@ eval("/*\n  Copyright © 2018 Andrew Powell\n\n  This Source Code Form is subjec
 /******/ 	
 /******/ 	/* webpack/runtime/get update manifest filename */
 /******/ 	!function() {
-/******/ 		__webpack_require__.hmrF = function() { return "main-34c2318-wps-hmr.json"; };
+/******/ 		__webpack_require__.hmrF = function() { return "main-713b94f-wps-hmr.json"; };
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	!function() {
-/******/ 		__webpack_require__.h = function() { return "9ba1a5aa05090e94d0b7"; }
+/******/ 		__webpack_require__.h = function() { return "c9625ffe2e44534cac77"; }
 /******/ 	}();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

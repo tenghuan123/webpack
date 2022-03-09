@@ -162,3 +162,16 @@ exports.loadJavaScript = () => ({
     }
 })
 
+
+
+// 加载ts
+exports.loadTypeScript = () => ({
+    resolve: {
+        extensions:['.js', '.ts', '.tsx', '.jsx']
+    },
+    module: {
+        rules: [
+            { test: /\.tsx?&/, exclude: /node_modules/, use: "ts-loader", }
+        ]
+    }
+})
