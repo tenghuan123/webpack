@@ -136,3 +136,29 @@ exports.loadImages = ({ limit } = {} ) => ({
         ]
     }
 })
+
+// 加载字体
+exports.loadFonts = ({ limit } = {} ) => ({
+    module: {
+        rules: [
+            {
+                test: /\.(ttf|eot|woff|woff2)$/,
+                type: 'asset/resource',
+                parser: { dataUrlCondition: {maxSize: limit } }
+            }
+        ]
+    }
+})
+
+// 加载babel
+
+const APP_SOURCE = path.join(__dirname, 'src')
+
+exports.loadJavaScript = () => ({
+    module: {
+        rules: [
+            { test: /\.js$/, include: APP_SOURCE, use: "babel-loader" }
+        ]
+    }
+})
+

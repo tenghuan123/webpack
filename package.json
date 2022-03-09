@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "wp --mode development",
-    "build": "node_modules/.bin/wp --mode=development",
+    "build": "wp --mode prod:legacy && wp --mode prod:modern",
     "watch": "nodemon --watch \"./webpack.*\" --exec \"npm start\""
   },
   "keywords": [],

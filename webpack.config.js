@@ -17,7 +17,9 @@ const commonConfig = merge([
     parts.BabelLoader(),
     parts.page({ title: 'Demo' }),
     parts.extractCSS({ loaders: cssLoaders }),
-    parts.loadImages({ limit: 150 })
+    parts.loadImages({ limit: 150 }),
+    parts.loadFonts({ limit: 150 }),
+    parts.loadJavaScript()
 ])
 
 const productionConfig = merge([parts.eliminateUnusedCSS()]);
@@ -29,6 +31,12 @@ const developmentConfig = merge([
 
 const getConfig = (mode) => {
     switch(mode) {
+        case "prod:legacy":
+            process.env.BROWSERSLIST_ENV = "legacy"
+            return merge(commonConfig, productionConfig)
+        case "prod:modern":
+            process.env.BROWSERSLIST_ENV = "modern"
+            return merge(commonConfig, productionConfig)
         case "production":
             return merge(commonConfig, productionConfig, { mode })
         case "development":
