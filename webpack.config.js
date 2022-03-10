@@ -19,7 +19,8 @@ const commonConfig = merge([
     parts.extractCSS({ loaders: cssLoaders }),
     parts.loadImages({ limit: 150 }),
     parts.loadFonts({ limit: 150 }),
-    parts.loadJavaScript()
+    parts.loadJavaScript(),
+    parts.generateSourceMaps({ type: 'source-map' })
 ])
 
 const productionConfig = merge([parts.eliminateUnusedCSS()]);

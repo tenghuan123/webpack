@@ -162,3 +162,5 @@ exports.loadJavaScript = () => ({
     }
 })
 
+// 源映射
+exports.generateSourceMaps = ({ type }) => ({ devtool: type })
