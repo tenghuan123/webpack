@@ -9,7 +9,12 @@ const parts = require('./webpack.part')
 const cssLoaders = [parts.autoprefixer(), parts.tailwind()]
 
 const commonConfig = merge([
-    { entry: ['./src'] },
+    { 
+        entry: ['./src'],
+        output: {
+            chunkFilename: 'chunk.[id].js'
+        }
+    },
     // {
     //     entry: { style: glob.sync("./src/**/*.css") } // 在此更改之后，您不必再从应用程序代码中引用样式。但是，在这种方法中，您必须小心 CSS 排序
     // },
