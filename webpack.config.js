@@ -1,5 +1,7 @@
 const { mode } = require('webpack-nano/argv')
 
+const path = require('path')
+
 const { merge } = require('webpack-merge')
 
 const parts = require('./webpack.part')
@@ -9,12 +11,19 @@ const parts = require('./webpack.part')
 const cssLoaders = [parts.autoprefixer(), parts.tailwind()]
 
 const commonConfig = merge([
-    { 
-        entry: ['./src'],
-        output: {
-            chunkFilename: 'chunk.[id].js'
-        }
-    },
+    // { 
+    //     entry: {
+    //         app: {
+    //             import: path.join(__dirname, 'src', 'index.js'),
+    //             dependOn: 'vendor',
+    //         },
+    //         vendor: ['react', 'react-dom']
+    //     },
+    //     output: {
+    //         chunkFilename: 'chunk.[id].js'
+    //     }
+    // },
+    { entry: ['./src'] }
     // {
     //     entry: { style: glob.sync("./src/**/*.css") } // 在此更改之后，您不必再从应用程序代码中引用样式。但是，在这种方法中，您必须小心 CSS 排序
     // },
@@ -28,7 +37,28 @@ const commonConfig = merge([
     parts.generateSourceMaps({ type: 'source-map' })
 ])
 
-const productionConfig = merge([parts.eliminateUnusedCSS()]);
+const productionConfig = merge([
+    // parts.eliminateUnusedCSS(),
+
+    { optimization: 
+        { 
+            splitChunks: 
+            { 
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]node_modules[\\/]/,
+                        name: 'vendor',
+                        chunks: "initial",
+                    }
+                },
+                minSize: { javascript: 20000, "css/mini-extra": 10000 }
+            } 
+        } 
+    },
+
+    { entry: ["webpack-plugin-serve/client"] },
+    parts.devServer()
+]);
 
 const developmentConfig = merge([
     { entry: ["webpack-plugin-serve/client"] },
