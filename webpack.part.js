@@ -12,9 +12,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const WebpackWatchedGlobEntries = require('webpack-watched-glob-entries-plugin')
 
+const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
+
 const glob = require('glob')
 
 const PurgeCSSPlugin = require('purgecss-webpack-plugin')
+const webpack = require('webpack')
 
 const ALL_FILES = glob.sync(path.join(__dirname, 'src/*.js'))
 
@@ -164,3 +167,19 @@ exports.loadJavaScript = () => ({
 
 // 源映射
 exports.generateSourceMaps = ({ type }) => ({ devtool: type })
+
+// 清理
+exports.clean = () => ({
+    output: {
+        clean: true
+    }
+})
+
+// 修订
+exports.attachRevision = () => ({
+    plugins: [
+        new webpack.BannerPlugin({
+            banner: new GitRevisionPlugin().version()
+        })
+    ]
+})

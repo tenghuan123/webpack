@@ -11,19 +11,19 @@ const parts = require('./webpack.part')
 const cssLoaders = [parts.autoprefixer(), parts.tailwind()]
 
 const commonConfig = merge([
-    // { 
-    //     entry: {
-    //         app: {
-    //             import: path.join(__dirname, 'src', 'index.js'),
-    //             dependOn: 'vendor',
-    //         },
-    //         vendor: ['react', 'react-dom']
-    //     },
-    //     output: {
-    //         chunkFilename: 'chunk.[id].js'
-    //     }
-    // },
-    { entry: ['./src'] },
+    { 
+        entry: {
+            app: {
+                import: path.join(__dirname, 'src', 'index.js'),
+                dependOn: 'vendor',
+            },
+            vendor: ['react', 'react-dom']
+        },
+        output: {
+            chunkFilename: 'chunk.[id].js'
+        }
+    },
+    // { entry: ['./src'] },
     // {
     //     entry: { style: glob.sync("./src/**/*.css") } // 在此更改之后，您不必再从应用程序代码中引用样式。但是，在这种方法中，您必须小心 CSS 排序
     // },
@@ -34,7 +34,8 @@ const commonConfig = merge([
     parts.loadImages({ limit: 150 }),
     parts.loadFonts({ limit: 150 }),
     parts.loadJavaScript(),
-    parts.generateSourceMaps({ type: 'source-map' })
+    parts.generateSourceMaps({ type: 'source-map' }),
+    parts.clean()
 ])
 
 const productionConfig = merge([
@@ -57,6 +58,7 @@ const productionConfig = merge([
     },
 
     { entry: ["webpack-plugin-serve/client"] },
+    parts.attachRevision(),
     parts.devServer()
 ]);
 
@@ -69,10 +71,10 @@ const getConfig = (mode) => {
     switch(mode) {
         case "prod:legacy":
             process.env.BROWSERSLIST_ENV = "legacy"
-            return merge(commonConfig, productionConfig)
+            return merge(commonConfig, productionConfig, { mode:'production' })
         case "prod:modern":
             process.env.BROWSERSLIST_ENV = "modern"
-            return merge(commonConfig, productionConfig)
+            return merge(commonConfig, productionConfig, { mode:'production' })
         case "production":
             return merge(commonConfig, productionConfig, { mode })
         case "development":
